@@ -1,6 +1,6 @@
 @PromocodeFactory_HostAddress = http://localhost:5128
 
-GET {{PromocodeFactory_HostAddress}}/weatherforecast/
+GET {{PromocodeFactory_HostAddress}}/api/employees/1
 Accept: application/json
 
 ###

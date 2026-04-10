@@ -3,13 +3,9 @@ namespace PromocodeFactory.Models
     public class Employee
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Position { get; set; }
-    }
-    public interface IEmployeeRepository
-    {
-        Task<Employee> GetById(int id);
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Position { get; set; } = string.Empty;
     }
 }
                                                                                                                                                                                                                                                                                                     

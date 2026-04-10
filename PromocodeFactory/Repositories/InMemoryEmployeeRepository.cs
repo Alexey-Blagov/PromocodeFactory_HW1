@@ -1,14 +1,13 @@
-﻿using PromocodeFactory.Models;
+using PromocodeFactory.Models;
 
 namespace PromocodeFactory.Repositories
 {
-    public class InMemoryEmployeeRepository: Models.IEmployeeRepository
+    public class InMemoryEmployeeRepository : IEmployeeRepository
     {
         private readonly List<Employee> _employees;
 
         public InMemoryEmployeeRepository()
         {
-            // Тестовые данные вводим в базу  
             _employees = new List<Employee>
             {
                 new Employee { Id = 1, FirstName = "Иван", LastName = "Иванов", Position = "Разработчик" },
@@ -17,11 +16,10 @@ namespace PromocodeFactory.Repositories
             };
         }
 
-        public Task<Employee> GetById(int id)
+        public Task<Employee?> GetById(int id)
         {
             var employee = _employees.FirstOrDefault(e => e.Id == id);
             return Task.FromResult(employee);
         }
     }
 }
-

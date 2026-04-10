@@ -3,18 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using PromocodeFactory.Models;
 using PromocodeFactory.Repositories;
 
-
 namespace PromocodeFactory.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class EmployeesController : ControllerBase
     {
-        private readonly IMapper _mapper; // <-- Объявляем поле для IMapper
-        private readonly Models.IEmployeeRepository _repository;
+        //Создаем поля инкапсулированные в контроллер паттерн "репозиторий"
+        private readonly IMapper _mapper;
+        private readonly IEmployeeRepository _repository;
 
-        // IMapper будет передан автоматически через конструктор
-        public EmployeesController(Models.IEmployeeRepository repository, IMapper mapper)
+        public EmployeesController(IEmployeeRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -25,11 +24,13 @@ namespace PromocodeFactory.Controllers
         {
             var employee = await _repository.GetById(id);
             if (employee == null)
+            {
                 return NotFound();
-
-            // Используем IMapper для преобразования Employee в EmployeeResponse
+            }
+            //Испльзуем маппер для получения запроса в случаее найденного результата
             var response = _mapper.Map<EmployeeResponse>(employee);
             return Ok(response);
         }
+
     }
 }
