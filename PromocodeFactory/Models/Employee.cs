@@ -1,11 +1,11 @@
-namespace PromocodeFactory.Models
+﻿namespace PromocodeFactory.Models
 {
     public class Employee
     {
         public int Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
+        public int RoleId { get; set; }
         public string Position { get; set; } = string.Empty;
     }
 }
-                                                                                                                                                                                                                                                                                                    
